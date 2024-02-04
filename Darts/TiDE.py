@@ -107,28 +107,28 @@ pred = SCALER.inverse_transform(
         n=FORECAST_HORIZON, series=data_transformed, future_covariates=dynamic_covariates_transformed, num_samples=50))
 
 # let's check one example
-pred_df = pred[0].quantile_df(0.5).reset_index().rename(columns={'Weekly_Sales_0.5':'forecast'})
-pred_df['Store'] = TRANSFORMER.inverse_transform(pred[0]).static_covariates['Store'][0]
-pred_df['Dept'] = TRANSFORMER.inverse_transform(pred[0]).static_covariates['Store'][0]
-pred_df = pd.concat([train[(train['Store'] == 1) & (train['Dept'] == 1)], pred_df])
+# pred_df = pred[0].quantile_df(0.5).reset_index().rename(columns={'Weekly_Sales_0.5':'forecast'})
+# pred_df['Store'] = TRANSFORMER.inverse_transform(pred[0]).static_covariates['Store'][0]
+# pred_df['Dept'] = TRANSFORMER.inverse_transform(pred[0]).static_covariates['Store'][0]
+# pred_df = pd.concat([train[(train['Store'] == 1) & (train['Dept'] == 1)], pred_df])
 # print(pred_df)
 
-fig = px.line(
-    pred_df,
-    x=pred_df["Date"],
-    y=['Weekly_Sales', 'forecast'],
-    hover_data={"Date": "|%B %d, %Y"},
-    width=1350,
-    height=500,
-)
-
-fig.update_layout(
-    legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
-    yaxis_title="Weekly Sales",
-    xaxis_title="Delivery Week",
-)
-
-fig.show()
+# fig = px.line(
+#     pred_df,
+#     x=pred_df["Date"],
+#     y=['Weekly_Sales', 'forecast'],
+#     hover_data={"Date": "|%B %d, %Y"},
+#     width=1350,
+#     height=500,
+# )
+#
+# fig.update_layout(
+#     legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
+#     yaxis_title="Weekly Sales",
+#     xaxis_title="Delivery Week",
+# )
+#
+# fig.show()
 
 # Save models
 # *************************************************************************

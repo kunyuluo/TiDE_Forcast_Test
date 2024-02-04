@@ -64,10 +64,12 @@ dynamic_covariates.append(covariate)
 
 # scale covariates
 dynamic_covariates_transformed = SCALER.fit_transform(dynamic_covariates)
-print(dynamic_covariates_transformed[0].pd_dataframe())
+print(dynamic_covariates[0].pd_dataframe())
+# print(dynamic_covariates_transformed[0].pd_dataframe())
 
 # scale data
 data_transformed = SCALER.fit_transform(train_darts)
+# print(train_darts[0].pd_dataframe())
 # print(data_transformed[0].pd_dataframe())
 
 # transform static covariates

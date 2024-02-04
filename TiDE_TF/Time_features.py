@@ -68,7 +68,11 @@ def distance_to_holiday(holiday):
 
 
 class TimeCovariates():
-    """Extract all time covariates except for holidays."""
+    """
+    Extract all time covariates except for holidays.
+
+    -Normalized: normalize data into range of (-0.5, 0.5)
+    """
 
     def __init__(self, datetimes, normalized=True, holiday=False):
         self.dti = datetimes
